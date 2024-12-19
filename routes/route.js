@@ -11,10 +11,13 @@ const limiter = rateLimit({
 const { shorten} = require("../controller/shorten");
 const{short} = require("../controller/redirect")
 const{analytics} =require("../controller/analytics")
+const{topic} =require("../controller/topic")
+const{overall} =require("../controller/overall")
 
 router.post("/shorten",limiter,  shorten);
 router.get('/shorten/:alias', short);
 router.get('/analytics/:alias', analytics);
-
+router.get('/topic/:topic', topic);
+router.get('/overall', overall);
 
 module.exports = router;
