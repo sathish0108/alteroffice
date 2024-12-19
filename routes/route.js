@@ -9,12 +9,12 @@ const limiter = rateLimit({
 });
 
 const { shorten} = require("../controller/shorten");
-
+const{short} = require("../controller/redirect")
+const{analytics} =require("../controller/analytics")
 
 router.post("/shorten",limiter,  shorten);
-
-
-
+router.get('/shorten/:alias', short);
+router.get('/analytics/:alias', analytics);
 
 
 module.exports = router;
