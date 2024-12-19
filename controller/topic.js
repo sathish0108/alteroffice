@@ -1,13 +1,9 @@
 const Analytics = require("../models/Analytics");
 const Url = require("../models/shortUrl");
 
-
 const getClicksByDateForTopic = async (topic) => {
   const past7Days = new Date(new Date().setDate(new Date().getDate() - 7));
-
-  
   const urls = await Url.find({ topic });
-
   const aliasList = urls.map((url) => url.customAlias); 
 
   const clicks = await Analytics.aggregate([
@@ -45,7 +41,7 @@ const getUrlsInTopicAnalytics = async (topic) => {
       const uniqueClicks = await Analytics.distinct("ip", { alias }).then((ips) => ips.length);
 
       return {
-        shortUrl: `http://localhost:3000/${alias}`,
+        shortUrl: `http://localhost:8000/api/${alias}`,
         totalClicks,
         uniqueClicks,
       };
