@@ -1,22 +1,28 @@
 const mongoose = require("mongoose");
 
-const AnalyticsSchema = new mongoose.Schema({
-  alias: {
+const interactionSchema = new mongoose.Schema({
+  alias:
+   { 
     type: String,
-    required: true, 
+     required: true 
+    },
+  timestamp:
+   { type: Date,
+     default: Date.now 
+    },
+  ip: 
+  { 
+    type: String
+    
   },
-  ip: {
-    type: String,
-    required: true, 
-  },
-  userAgent: {
-    family: { type: String, required: true }, 
-    device: { type: String, default: "unknown" }, 
-  },
-  timestamp: {
-    type: Date,
-    default: Date.now, 
-  },
+  userAgent:
+   {
+     type: String 
+    },
+  location: 
+  { 
+    type: Object 
+  }, 
 });
 
-module.exports = mongoose.model("Analytics", AnalyticsSchema);
+module.exports = mongoose.model("interaction", interactionSchema);

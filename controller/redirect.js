@@ -1,6 +1,6 @@
 const express = require("express");
 const Url = require("../models/shortUrl");
-const Analytics = require("../models/model");
+const Analytics = require("../models/Analytics");
 const geoip = require("geoip-lite");
 const useragent = require("useragent");
 
